@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>task0001</title>
-	<link rel="stylesheet" type="text/css" href="task0001.css">
+    <meta charset="UTF-8">
+    <title>task0001</title>
+    <link rel="stylesheet" type="text/css" href="task0001.css">
 </head>
+
 <body>
-	<h1>6.1 用两种方法来实现一个背景色为红色、宽度为960px的DIV在浏览器中居中</h1>
-	<div class="box01">
-		<div class="div01"></div>
-	</div>
-	<h1>6.2 用两种方法来实现一个背景色为红色、宽度为960px的DIV在浏览器中居中</h1>
-	<div class="box02">
-		<div class="top">
-			<div class="a1"></div>
-			<div class="a2"></div>
-			<div class="a3"></div>
-			<div class="a4"></div>
+    <h1>6.1 用两种方法来实现一个背景色为红色、宽度为960px的DIV在浏览器中居中</h1>
+    <div class="box01">
+        <div class="div01"></div>
+    </div>
+    <h1>6.2 不使用border-radius,实现一个可复用的高度和宽度都自适应的圆角矩形</h1>
+    <div class="box02">
+        <div class="top">
+            <div class="a1"></div>
+            <div class="a2"></div>
+            <div class="a3"></div>
+            <div class="a4"></div>
+        </div>
+        <div class="mid"></div>
+        <div class="bom">
+            <div class="a4"></div>
+            <div class="a3"></div>
+            <div class="a2"></div>
+            <div class="a1"></div>
+        </div>
+    </div>
+    <h1>6.3 两列布局：其中左侧部分宽度固定、右侧部分宽度随浏览器宽度的变化而自适应变化 </h1>
+    <div class="box03 clearfix">
+        <!-- <div class="div-a">div-a</div>
+		<div class="div-b">div-b</div>
+		<div class="div-c">div-c</div> -->
+        <!-- <div class="ab-wrap">
+			<div class="div-a">div-a</div>
+			<div class="div-b">div-b</div>
 		</div>
-		<div class="mid"></div>
-		<div class="bom">
-			<div class="a4"></div>
-			<div class="a3"></div>
-			<div class="a2"></div>
-			<div class="a1"></div>
-		</div>
-	</div>
+		<div class="div-c"></div> -->
+        <div class="b-wrap">
+            <div class="div-b">div-b</div>
+        </div>
+        <div class="div-a">div-a</div>
+        <div class="div-c">div-c</div>
+    </div>
+    <h1>6.4 三列布局：其中左侧和右侧的部分宽度固定，中间部分宽度随浏览器宽度的变化而自适应变化</h1>
+    <div class="box04">
+        <!--  <div class="parent clearfix">
+           <div class="main">main</div>
+           <div class="left">left</div>
+           <div class="right">right</div>
+       </div> -->
+        <!--  <div class="parent clearfix">
+           <div class="main-wrap">
+               <div class="main">main</div>
+           </div>
+           <div class="left">left</div>
+           <div class="right">right</div>
+       </div> -->
+        <div class="parent">
+            <div class="main">main</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+        </div>
+    </div>
+
+    <h1>6.5 实现一个浮动布局，红色容器中每一行的蓝色容器数量随着浏览器宽度的变化而变化 </h1>
+    <div class="box05">
+        <div class="wrap clearfix">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 </body>
+
 </html>
