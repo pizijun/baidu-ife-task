@@ -76,11 +76,10 @@ header{
 
 /*index.html*/
 div.index-wrap{
-	border: 1px solid black;
 	width: 100%;
+	background: #EEEEEE;
 }
 .banner{
-	border: 1px solid black;
 	width: 100%;
 	position: relative;
 }
@@ -118,4 +117,154 @@ div.index-wrap{
 	font-size: 12px;
 	text-indent: 2em;
 	line-height: 150%;
+}
+
+
+
+.figure-wrap{
+	width: 980px;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-bottom: 110px;
+}
+.figure-wrap figure{
+	width: 320px;
+	float: left;
+	background: #fff;
+	padding-bottom: 9999px;
+	margin-bottom: -9999px;
+	padding-top: 10px;
+}
+.figure-wrap figure:nth-child(2){
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.figure-wrap figure img{
+	display: block;
+	width: 300px;
+	height: 180px;
+	margin: 0 auto;
+}
+.content-wrap{
+	font-size: 12px;
+	padding: 10px 30px 20px;
+}
+.content-wrap p{
+	text-indent: 2em;
+	line-height: 170%;
+}
+
+
+.intro-wrap{
+	width: 100%;
+	height: auto;
+	position: relative;
+	background: #fff;
+	padding: 160px 0 180px 0 ;
+}
+.intro-wrap img{
+	display: block;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	top: -50px;
+	margin-left: -80px;
+
+}
+.intro{
+	width: 600px;
+	margin: 0 auto;
+}
+@font-face{
+	font-family: Century Gothic;
+	src: url(../fonts/Century%20Gothic.ttf);
+}
+.intro h1{
+	font-size: 20px;
+	color: #000;
+	font-family: Century Gothic;
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+.intro p{
+	font-size: 14px;
+	color: #000;
+	text-indent: 2em;
+	line-height: 150%;
+}
+
+/*footer*/
+footer{
+	width: 100%;
+	font-size: 12px;
+	color: #fff;
+	background: #000;
+}
+.nav-foot{
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #333333;
+	/*overflow: hidden;*/
+}
+.nav-foot ul{
+	font-size: 0;
+	padding: 7px 0;
+
+	/* float: left;
+	position: relative;
+	left: 50%; */
+}
+.nav-foot ul li{
+	display: inline-block;
+	font-size: 14px;
+	margin: 0 14px;
+
+	/* float: left;
+	position: relative;
+	right: 50%; */
+}
+.nav-foot ul li a{
+	display: block;
+	color: #fff;
+}
+
+.links-wrap{
+	width: 980px;
+	margin: 40px auto 95px;
+
+}
+.link-item{
+	font-size: 12px;
+	float: left;
+	margin-right: 145px;
+
+}
+.link-item p{
+	margin-bottom: 30px;
+	color: #CCCCCC;
+}
+.link-item ul li{
+	line-height: 150%;
+}
+
+.link-item ul li a{
+	display: block;
+	color: #FFF;
+}
+.link-item ul li a:hover{
+	text-decoration: underline;
+}
+.foot-info{
+	text-align: center;
+}
+.foot-info *{
+	display: block;
+	margin: 0 auto;
+}
+.foot-info>span{
+	margin-bottom: 25px;
 }
