@@ -11,7 +11,8 @@ ul,li{
 }
 body{
 	min-width: 980px;
-	/*font: 14px/1.5 "宋体",sans-serif;*/
+	font: 14px "宋体",sans-serif;
+	background: #EEEEEE;
 }
 .clearfix{
 	*zoom: 1;
@@ -197,6 +198,238 @@ div.index-wrap{
 	line-height: 150%;
 }
 
+/*blog.html*/
+.blog-wrap{
+	width: 980px;
+	margin: 20px auto 0;
+}
+.blog-left{
+	float: left;
+	width: 710px;
+}
+.blog-right{
+	float: right;
+	width: 260px;
+}
+.post{
+	width: 100%;
+	font-size: 12px;
+	padding: 25px 20px 16px;
+	box-sizing: border-box;
+	background: #fff;
+	position: relative;
+}
+.post:nth-child(2){
+	margin: 10px 0;
+}
+.post h1{
+	font-size: 16px;
+	color: #A660B7;
+}
+.post h2{
+	font-size: 12px;
+	color: #666;
+	margin: 10px 0 16px;
+}
+.post p{
+	text-indent: 2em;
+	line-height: 170%;
+}
+.post-info{
+	color: #999999;
+	text-align: right;
+	margin-top: 35px;
+}
+.tag-info{
+	position: absolute;
+	top: 25px;
+	left: -50px;
+}
+.tag-info span{
+	display: block;
+	width: 50px;
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+}
+.tag-info span:first-child{
+	background-color: #6BA3A8;
+}
+.tag-info span:last-child{
+	background-color: #95E8A7;
+}
+
+.pagination{
+	font-size: 0;
+	text-align: center;
+	margin: 10px auto 50px;
+}
+.pagination li{
+	font-size: 12px;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
+.pagination li a{
+	display: block;
+	padding: 8px 10px;
+	background: #fff;
+}
+
+.search-wrap{
+	width: 100%;
+	background: #fff;
+	padding: 20px 0;
+	margin-bottom: 10px;
+}
+.search{
+	border: 1px solid #BCBCBC;
+	height: 40px;
+	font-size: 0;
+	margin: 0 auto;
+	width: 220px;
+
+	/*margin: 0 20px;*/
+	/*position: relative;*/
+
+
+}
+.keyword{
+	border: none;
+	height: 40px;
+	width: 170px;
+	outline: medium none;
+	background: url("../images/search.png") no-repeat center;
+	background-size: 100%;
+
+	/*position: absolute;*/
+	/*top: 0;*/
+}
+.keyword:focus{
+	background-image: none;
+}
+.btn{
+	border: none;
+	height: 40px;
+	background: #B7B7B7;
+	width: 50px;
+	color: #fff;
+	outline: none;
+
+	/*position: absolute;*/
+	/*right: 0;*/
+	/*top: 0;*/
+	/*font-size: 20px;*/
+}
+
+.post-nav{
+	margin-bottom: 10px;
+	background: #fff;
+}
+.post-nav li{
+	border-left: 4px solid #ADF0BC;
+	box-sizing: border-box;
+	border-top: 1px solid #BCBCBC;
+	border-bottom: 1px solid #BCBCBC;
+	margin-top: -1px;
+}
+.post-nav li a{
+	display: block;
+	padding: 20px 0 20px 20px;
+	color: #666666;
+}
+
+.post-nav .selected,.post-nav li:hover{
+	border-left: 4px solid #6BA3A8;
+}
+.cal-wrap{
+	width: 100%;
+	background: #fff;
+	padding: 15px 0;
+	margin-bottom: 10px;
+}
+.cal{
+	border-spacing: 0;
+	border-collapse: collapse;
+	text-align: center;
+	color: #999999;
+	margin: 0 auto;
+}
+.cal th,.cal td{
+	margin: 0;
+	padding: 0;
+}
+.cal caption{
+	color: #773C88;
+	padding: 5px 0;
+}
+.cal caption [rel='prev']{
+	float: left;
+	margin-left: 8px;
+}
+.cal caption [rel='next']{
+	float: right;
+	margin-right: 8px;
+}
+.cal caption a:link{
+	color: #773C88;
+}
+.cal thead th{
+	border-bottom: 1px solid #eee;
+	padding: 7px;
+}
+.cal tbody td{
+	border-bottom: 1px solid #eee;
+	margin-bottom: -1px;
+}
+.cal tbody a{
+	display: block;
+	color: #999999;
+	padding: 7px; 
+}
+.cal tbody .selected a,.cal tbody td a:hover{
+	background: #773C88;
+}
+
+.tags{
+	background: #fff;
+	padding: 15px 15px 20px;
+	font-size: 12px;
+	color: #773C88;
+}
+.tags p{
+	color: #666666;
+	margin-bottom: 14px;
+}
+.tags div span{
+	margin-right: 5px;
+}
+.tags div:nth-child(2) span:nth-child(1),.tags div:nth-child(3) span:nth-child(2){
+	font-size: 24px;
+	font-weight: bold;
+}
+.tags div:nth-child(2) span:nth-child(2){
+	font-size: 14px;
+	font-weight: bold;
+}
+.tags div:nth-child(3) span:nth-child(3){
+	font-size: 14px;
+}
+.tags div:nth-child(4) span:nth-child(2){
+	font-size: 20px;
+	font-weight: bold;
+}
+.tags div:nth-child(4) span:nth-child(4){
+	font-size: 15px;
+}
+.tags div:nth-child(5) span:nth-child(2){
+	font-size: 18px;
+	font-weight: bold;
+}
+.tags div:nth-child(5) span:nth-child(3){
+	font-size: 14px;
+	font-weight: bold;
+}
 /*footer*/
 footer{
 	width: 100%;
@@ -268,3 +501,4 @@ footer{
 .foot-info>span{
 	margin-bottom: 25px;
 }
+
