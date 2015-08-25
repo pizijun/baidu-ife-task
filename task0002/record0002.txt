@@ -1,0 +1,22 @@
+util.js
+1.关于类型检测
+typeof 操作符是用来区分基本类型和引用类型的
+ typeof null//->'object',将null看成是一个空的引用类型
+ typeof 'so'//->'string'
+ typeof [] //-> 'object'
+ typeof function(){} //->'function'
+ typeof 1 //->'number'
+ typeof undefined //->'undefined'
+instanceof 用来检测对象是否由某个构造函数而来的
+ [] instanceof Array //->true
+ [] instanceof Object//->true
+ var fn=function(){}
+ fn instanceof Function//->true
+ fn instanceof Object//->true
+每个对象都有个constructor属性
+ [].constructor === Array //->true
+ fn.constructor === Function //->true
+instanceof 和constructor在遇到跨域问题是不好使的
+检测数组类型，EcmaScript 5 引入了一个Array.isArray()的方法
+ Array.isArray([]) //->true
+
