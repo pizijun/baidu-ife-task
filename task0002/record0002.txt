@@ -1,5 +1,5 @@
 util.js
-1.关于类型检测
+1.数组类型检测
 typeof 操作符是用来区分基本类型和引用类型的
  typeof null//->'object',将null看成是一个空的引用类型
  typeof 'so'//->'string'
@@ -19,4 +19,15 @@ instanceof 用来检测对象是否由某个构造函数而来的
 instanceof 和constructor在遇到跨域问题是不好使的
 检测数组类型，EcmaScript 5 引入了一个Array.isArray()的方法
  Array.isArray([]) //->true
+2.函数类型检测
+简单的用typeof 来检测是不行的
+  var fn = function(){};
+  var hm = HTMLDocument;
+  typeof fn //->'function'
+  typeof hm //->'function'
+用Object的toString方法也是不行的
+ Object.prototype.toStirng.call(fn) //->'[object Function]'
+ Object.prototype.toStirng.call(hm) //->'[object Function]'
+而且像正则表达式和一些dom元素在不同的浏览器用typeof操作来检测也是返回的是'function',所以完美的解决方案
+见：http://www.jb51.net/article/19841.htm
 
