@@ -30,4 +30,15 @@ instanceof 和constructor在遇到跨域问题是不好使的
  Object.prototype.toStirng.call(hm) //->'[object Function]'
 而且像正则表达式和一些dom元素在不同的浏览器用typeof操作来检测也是返回的是'function',所以完美的解决方案
 见：http://www.jb51.net/article/19841.htm
-
+2.数组去重
+ (1)要注意去掉空字符(若需要保留空字符串的话，可将对空字符串的限定去掉,此例中为arr[i]!=="")，以及!=(不等)与!==(不全等
+ 的区别，!==不全等)会比较值和其类型。
+ (2)由于在IE6-8中数组的indexOf方法不起作用，因此还需要重写一个indexof方法
+如：function indexOf(arr,item){
+	for(var i=0,len=arr.length;i<len;i++){
+		if(arr[i] === item){
+			return i;
+		}
+	}
+	return -1;
+}
