@@ -42,3 +42,23 @@ instanceof 和constructor在遇到跨域问题是不好使的
 	}
 	return -1;
 }
+3.正则验证邮箱
+ 需要搞清楚邮箱的一般书写规则，此处是：字母或数字开头+字母、数字、点、减号或者下划线+@+域名+顶级域名，且位数限定为6-32个
+4.获取元素的位置
+ (1).在讨论元素的位置时，必须要弄清楚所相对的坐标是文档坐标还是视口坐标，所以一般情况下，在两个坐标系之间进行转换时，需要
+ 加上或减去滚动条的位置
+ 获取窗口滚动条的位置：
+ function getScrollOffsets(w){
+ 	w = w || window;
+ 	//ie8+及其他
+ 	if(w.pageXOffset != null){
+ 		return {x:w.pageXOffset,y:w.pageYOffset}
+ 	}
+ 	var d = w.document;
+ 	//标准模式
+ 	if(document.compatMode == "CSS1Compat"){
+ 		return {x:d.documentElement.scrollLeft,y:d.documentElement.scrollTop};
+ 	}
+ 	//怪异模式
+ 	return {x:d.body.scrollLeft,y:d.body.scrollTop};
+ }

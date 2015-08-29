@@ -133,7 +133,7 @@ function simpleTrim(str){
 str = trim(str);
 console.log(str); // 'hi!'*/
 function trim(str){
-    return str.replace(/\s+/,"").replace(/(\s+)$/,"");
+    return str.replace(/^\s+/,"").replace(/(\s+)$/,"");
 }
 
 
@@ -181,4 +181,59 @@ function getObjectLength(obj){
         }
     }
     return count;
+}
+
+
+
+// 判断是否为邮箱地址
+function isEmail(emailStr){
+    var pattern = /^([a-z0-9]+(\w|\.|\-)*){6,32}@([a-z0-9]+-?[a-z0-9]+){1,3}\.([a-z]{2,4}$)/i;
+    return pattern.test(emailStr);
+}
+
+// 判断是否为手机号
+function isMobilePhone(phone){
+    var pattern = /^1(3|4|5|7|8)[0-9]{9}$/;
+    return pattern.test(phone);
+}
+
+
+
+
+
+// 3.1 任务描述
+// 先来一些简单的，在你的util.js中完成以下任务：
+
+function hasClass(element,classname){
+    var classStr = trim(element.className);
+    var classArr = uniqArray(classStr.split(" "));
+    for(var i=0,len=classArr.length;i<len;i++){
+        if(classArr.indexOf(classname) != -1){
+            return true;
+        }
+    }
+    return false;
+}
+
+// 为element增加一个样式名为newClassName的新样式
+function addClass(element,newClassName){
+    if(!hasClass(element,newClassName)){
+        element.className += " " + newClassName;
+    }
+}
+
+
+// 移除element中的样式oldClassName
+function removeClass(element,oldClassName){
+    if(hasClass(element,oldClassName)){
+        element.className = element.className.replace(oldClassName,"");
+    }
+}
+
+// 判断siblingNode和element是否为同一个父元素下的同一级的元素，返回bool值
+function isSiblingNode(element,siblingNode){
+    if(element.parentNode === siblingNode.parentNode){
+        return true;
+    }
+    return false;
 }
