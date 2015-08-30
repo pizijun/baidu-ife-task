@@ -62,3 +62,29 @@ instanceof 和constructor在遇到跨域问题是不好使的
  	//怪异模式
  	return {x:d.body.scrollLeft,y:d.body.scrollTop};
  }
+ (2).getBoundingClientRect()方法返回元素在视口坐标的位置和尺寸，由IE5引入，为了转换成文档坐标需要加上滚动的偏移量
+ (3).元素的offsetLeft和offsetHeight返回元素相对于文档坐标的位置，但除了被定位了的元素的后代元素和其他一些元素(如表单的单元格),
+ 利用这两个属性返回的是其相对于其父元素的坐标位置。所以要获取元素在文档坐标的位置要这样：
+ funciton getElementPosition(e){
+ 	var x=0,y=0;
+ 	while(e != null){
+ 		x += e.offsetLeft;
+ 		y += e.offsetHeight;
+ 		e = e.offsetParent;
+ 	}
+ 	return {x:x,y:y}
+ }
+ (4).考虑到可滚动和元素的溢出情况，获取元素在视口坐标的位置要这样，它和getBoundingClientRect()的返回值是一样的
+ function getElemtnPos(elt){
+ 	var x=0,y=0;
+ 	for(var e = elt;e != null; e = e.offsetParent){
+ 		x += e.offsetLeft;
+ 		y += e.offsetTop;
+ 	}
+ 	//循环元素的所有祖先元素，减去滚动条偏移量，转换为视口坐标
+ 	for(var e = elt.parentNode; e!=null && e.nodeType ==1;e=e.parentNode){
+ 		x -= e.scrollLeft;
+ 		y -= e.scrollTop;
+ 	}
+ 	return {x:x,y:y};
+ }

@@ -237,3 +237,11 @@ function isSiblingNode(element,siblingNode){
     }
     return false;
 }
+
+
+// 获取element相对于浏览器窗口的位置，返回一个对象{x, y}
+function getPosition(element){
+    var x=0,y=0;
+    var box = element.getBoundingClientRect();
+    return {x:box.left,y:box.top};
+}
