@@ -245,3 +245,226 @@ function getPosition(element){
     var box = element.getBoundingClientRect();
     return {x:box.left,y:box.top};
 }
+
+
+
+
+// 接下来挑战一个mini $，它和之前的$是不兼容的，它应该是document.querySelector的功能子集，
+// 在不直接使用document.querySelector的情况下，在你的util.js中完成以下任务：
+
+// 实现一个简单的Query
+
+// 可以通过id获取DOM对象，通过#标示，例如
+$("#adom"); // 返回id为adom的DOM对象
+
+// 可以通过tagName获取DOM对象，例如
+$("a"); // 返回第一个<a>对象
+
+// 可以通过样式名称获取DOM对象，例如
+$(".classa"); // 返回第一个样式定义包含classa的对象
+
+// 可以通过attribute匹配获取DOM对象，例如
+$("[data-log]"); // 返回第一个包含属性data-log的对象
+
+$("[data-time=2015]"); // 返回第一个包含属性data-time且值为2015的对象
+
+// 可以通过简单的组合提高查询便利性，例如
+$("#adom .classa"); // 返回id为adom的DOM所包含的所有子节点中，第一个样式定义包含classa的对象
+
+function $(selector) {
+    if(!selector){
+        return;
+    }
+    var getChilds = function(element) {
+        return element.getElementsByTagName("*");
+    }
+    var arr = trim(selector).split(" ");
+    var elet = document.getElementsByTagName("html")[0];
+    for (var i = 0, len = arr.length; i < len; i++) {
+        var signal = arr[i][0];
+        var childs = getChilds(elet);
+        switch (signal) {
+            case "#":
+                var content = arr[i].slice(1);
+                for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                    if (childs[j].id === content) {
+                        elet = childs[j];
+                        break;
+                    }
+                }
+                break;
+            case ".":
+                var content = arr[i].slice(1);
+                for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                    if (childs[j].className.indexOf(content) != -1) {
+                        elet = childs[j];
+                        break;
+                    }
+                }
+                break;
+            case "[":
+                var content = trim(arr[i].slice(1, -1));
+                if (content.indexOf("=") != -1) {
+                    var key = trim(content.split("=")[0]);
+                    var value = trim(content.split("=")[1].slice(1, -1));
+                    for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                        if (childs[j].getAttribute(key) == value) {
+                            elet = childs[j];
+                            break;
+                        }
+                    }
+                } else {
+                    for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                        if (childs[j].attributes[content]) {
+                            elet = childs[j];
+                            break;
+                        }
+                    }
+                }
+                break;
+            default:
+                var content = arr[i];
+                for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                    if (childs[j].tagName.toLowerCase() === content) {
+                        elet = childs[j];
+                        break;
+                    }
+                }
+                break;
+        }
+
+    }
+    return elet;
+}
+
+
+
+// 4.1 任务描述
+
+// 我们来继续用封装自己的小jQuery库来实现我们对于JavaScript事件的学习，还是在你的util.js，实现以下函数
+
+// 给一个element绑定一个针对event事件的响应，响应函数为listener
+// 例如：
+/*function clicklistener(event) {
+    ...
+}
+addEvent($("#doma"), "click", clicklistener);*/
+
+function addEvent(element,eventType,listener){
+    if(element.addEventListener){
+        element.addEventListener(eventType,listener,false);
+    }else if(element.attachEvent){
+        element.attachEvent("on" + eventType,listener);
+    }
+}
+
+function clicklistener(event){
+    console.log("hello");
+}
+
+
+// 移除element对象对于event事件发生时执行listener的响应
+function removeEvent(element,eventType,listener){
+    if(element.removeEventListener){
+        element.removeEventListener(eventType,listener,true);
+    }else if(element.detachEvent){
+        element.detachEvent("on" + eventType,listener);
+    }
+}
+
+
+
+// 接下来我们实现一些方便的事件方法
+
+// 实现对click事件的绑定
+function addClickEvent(element,listener){
+    addEvent(element,"click",listener);
+}
+
+
+// 实现对于按Enter键时的事件绑定
+function addEnterEvent(element,listener){
+    addEvent(element,"keydown",listener);
+}
+function enterListener(e){
+    e = e || window;
+    if(e.keyCode == 13 || e.keyCode == 108){
+        alert("hello");
+    }
+}
+
+
+// 接下来我们把上面几个函数和$做一下结合，把他们变成$对象的一些方法
+// addEvent(element, event, listener) -> $.on(element, event, listener);
+// removeEvent(element, event, listener) -> $.un(element, event, listener);
+// addClickEvent(element, listener) -> $.click(element, listener);
+// addEnterEvent(element, listener) -> $.enter(element, listener);
+
+$.on = addEvent;
+$.un = removeEvent;
+$.click = addClickEvent;
+$.enter = addEnterEvent;
+
+
+
+// 接下来考虑这样一个场景，我们需要对一个列表里所有的<li>增加点击事件的监听
+/*<ul id="list">
+    <li>Simon</li>
+    <li>Kenner</li>
+    <li>Erik</li>
+</ul>*/
+
+/*function clickListener(event) {
+    console.log(event);
+}
+
+each($("#list").getElementsByTagName('li'), function(li) {
+    addClickEvent(li, clickListener);
+});*/
+
+// 我们通过自己写的函数，取到id为list这个ul里面的所有li，然后通过遍历给他们绑定事件。
+// 这样我们就不需要一个一个去绑定了。但是看看以下代码：
+
+/*<ul id="list">
+    <li id="item1">Simon</li>
+    <li id="item2">Kenner</li>
+    <li id="item3">Erik</li>
+</ul>
+<button id="btn">Change</button>*/
+
+/*function clickListener(event) {
+    console.log(event);
+}
+
+function renderList() {
+    $("#list").innerHTML = '<li>new item</li>';
+}
+
+function init() {
+    each($("#list").getElementsByTagName('li'), function(item) {
+        $.click(item, clickListener);
+    });
+
+    $.click($("#btn"), renderList);
+}
+init();*/
+
+//我们增加了一个按钮，当点击按钮时，改变list里面的项目，这个时候你再点击一下li，绑定事件不再生效了。
+// 那是不是我们每次改变了DOM结构或者内容后，都需要重新绑定事件呢？当然不会这么笨，接下来学习一下事件代理，
+// 然后实现下面新的方法：
+
+// 使用示例
+// 还是上面那段HTML，实现对list这个ul里面所有li的click事件进行响应
+// $.delegate($("#list"), "li", "click", clickHandle);
+
+
+function delegateEvent(element,tag,eventName,listener){
+    element["on" + eventName] = function(e){
+        e = e || window;
+        var target = e.srcElement ? e.srcElement : e.target;
+        if(target.tagName === tag){
+            target["on" + eventName] = listener;
+        }
+    }
+}
+$.delegate = delegateEvent;
