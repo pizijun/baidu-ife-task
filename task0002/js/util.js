@@ -456,8 +456,6 @@ init();*/
 // 使用示例
 // 还是上面那段HTML，实现对list这个ul里面所有li的click事件进行响应
 // $.delegate($("#list"), "li", "click", clickHandle);
-
-
 function delegateEvent(element,tag,eventName,listener){
     element["on" + eventName] = function(e){
         e = e || window;
@@ -468,3 +466,52 @@ function delegateEvent(element,tag,eventName,listener){
     }
 }
 $.delegate = delegateEvent;
+
+
+
+
+
+// 5.1 任务描述
+
+// 判断是否为IE浏览器，返回-1或者版本号
+function isIE(){
+    var ua = navigator.userAgent;
+    var pattern1 = /msie([^;]+)/i;
+    var pattern2 = /rv:([^\)]+)/i;
+    if(pattern1.test(ua)){
+        var version = "IE " + RegExp["$1"];
+        return version;
+    }else if(pattern2.test(ua)){
+        var version = "IE " + RegExp["$1"];
+        return version;
+    }
+    return -1;
+}
+
+
+// 设置cookie
+function setCookie(cookieName,cookieValue,expiredays){
+    if(!expiredays){
+        document.cookie = cookieName + "=" + cookieValue;
+    }else{
+        var date = new Date();
+        date.setTime(date.getTime() + expiredays * 24 * 60 * 60 * 1000)
+        document.cookie = cookieName + "=" + cookieValue + ";expires=" + date.toGMTString();
+    }
+}
+
+// 获取cookie值
+function getCookie(cookieName){
+    var cookies = document.cookie;
+    var cookieArr = cookies.split(";");
+    for(var i=0,len=cookieArr.length;i<len;i++){
+        var key = trim(cookieArr[i].split("=")[0]);
+        console.log(key);
+        var value = cookieArr[i].split("=")[1];
+        if(key == cookieName){
+            console.log(key);
+            return value;
+        }
+    }
+    return "";
+}
