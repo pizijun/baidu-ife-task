@@ -45,8 +45,8 @@ function cloneObject(src) {
     if (!src) {
         return;
     }
-    if(isFunction(src) || src instanceof RegExp){
-    	return;
+    if (isFunction(src) || src instanceof RegExp) {
+        return;
     }
     // 处理数组
     if (isArray(src)) {
@@ -58,14 +58,14 @@ function cloneObject(src) {
         }
     }
     //处理基本类型
-    if(typeof src === "string" || typeof src === "number" || typeof src === "boolean"){
-    	return src;
+    if (typeof src === "string" || typeof src === "number" || typeof src === "boolean") {
+        return src;
     }
 
     //处理日期
-    if(src instanceof Date){
-    	var des = new Date(src);
-    	return des;
+    if (src instanceof Date) {
+        var des = new Date(src);
+        return des;
     }
 
     //处理object对象
@@ -92,10 +92,10 @@ function cloneObject(src) {
 /*var a = [1, 3, 5, 7, 5, 3];
 var b = uniqArray(a);
 console.log(b); // [1, 3, 5, 7]*/
-function uniqArray(arr){
+function uniqArray(arr) {
     var result = [];
-    for(var i=0,len=arr.length;i<len;i++){
-        if(arr[i] !== "" && result.indexOf(arr[i]) === -1){
+    for (var i = 0, len = arr.length; i < len; i++) {
+        if (arr[i] !== "" && result.indexOf(arr[i]) === -1) {
             result.push(arr[i]);
         }
     }
@@ -107,16 +107,16 @@ function uniqArray(arr){
 // 实现一个简单的trim函数，用于去除一个字符串，头部和尾部的空白字符,假定空白字符只有半角空格、Tab
 // 练习通过循环，以及字符串的一些基本方法，分别扫描字符串str头部和尾部是否有连续的空白字符，
 // 并且删掉他们，最后返回一个完成去除的字符串
-function simpleTrim(str){
-    for(var i=0,len=str.length;i<len;i++){
-        if(str[i] != " " && str[i] != "\t"){
+function simpleTrim(str) {
+    for (var i = 0, len = str.length; i < len; i++) {
+        if (str[i] != " " && str[i] != "\t") {
             str = str.slice(i);
             break;
         }
     }
-    for(var i=str.length - 1;i>0;i--){
-        if(str[i] != "\t" && str[i] != " "){
-            str = str.slice(0,i+1);
+    for (var i = str.length - 1; i > 0; i--) {
+        if (str[i] != "\t" && str[i] != " ") {
+            str = str.slice(0, i + 1);
             break;
         }
     }
@@ -132,8 +132,8 @@ function simpleTrim(str){
 /*var str = '   hi!  ';
 str = trim(str);
 console.log(str); // 'hi!'*/
-function trim(str){
-    return str.replace(/^\s+/,"").replace(/(\s+)$/,"");
+function trim(str) {
+    return str.replace(/^\s+/, "").replace(/(\s+)$/, "");
 }
 
 
@@ -153,9 +153,9 @@ function output(item, index) {
 }
 each(arr, output);  // 0:java, 1:c, 2:php, 3:html*/
 
-function each(arr,fn){
-    for(var i=0,len=arr.length;i<len;i++){
-        fn(arr[i],i);
+function each(arr, fn) {
+    for (var i = 0, len = arr.length; i < len; i++) {
+        fn(arr[i], i);
     }
 }
 
@@ -172,10 +172,10 @@ function each(arr,fn){
     }
 };
 console.log(getObjectLength(obj)); // 3*/
-function getObjectLength(obj){
+function getObjectLength(obj) {
     var count = 0;
-    for(var prop in obj){
-        if(obj.hasOwnProperty(prop)){
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
             console.log(obj.hasOwnProperty(prop));
             count++;
         }
@@ -186,13 +186,13 @@ function getObjectLength(obj){
 
 
 // 判断是否为邮箱地址
-function isEmail(emailStr){
+function isEmail(emailStr) {
     var pattern = /^([a-z0-9]+(\w|\.|\-)*){6,32}@([a-z0-9]+-?[a-z0-9]+){1,3}\.([a-z]{2,4}$)/i;
     return pattern.test(emailStr);
 }
 
 // 判断是否为手机号
-function isMobilePhone(phone){
+function isMobilePhone(phone) {
     var pattern = /^1(3|4|5|7|8)[0-9]{9}$/;
     return pattern.test(phone);
 }
@@ -204,11 +204,11 @@ function isMobilePhone(phone){
 // 3.1 任务描述
 // 先来一些简单的，在你的util.js中完成以下任务：
 
-function hasClass(element,classname){
+function hasClass(element, classname) {
     var classStr = trim(element.className);
     var classArr = uniqArray(classStr.split(" "));
-    for(var i=0,len=classArr.length;i<len;i++){
-        if(classArr.indexOf(classname) != -1){
+    for (var i = 0, len = classArr.length; i < len; i++) {
+        if (classArr.indexOf(classname) != -1) {
             return true;
         }
     }
@@ -216,23 +216,23 @@ function hasClass(element,classname){
 }
 
 // 为element增加一个样式名为newClassName的新样式
-function addClass(element,newClassName){
-    if(!hasClass(element,newClassName)){
+function addClass(element, newClassName) {
+    if (!hasClass(element, newClassName)) {
         element.className += " " + newClassName;
     }
 }
 
 
 // 移除element中的样式oldClassName
-function removeClass(element,oldClassName){
-    if(hasClass(element,oldClassName)){
-        element.className = element.className.replace(oldClassName,"");
+function removeClass(element, oldClassName) {
+    if (hasClass(element, oldClassName)) {
+        element.className = element.className.replace(oldClassName, "");
     }
 }
 
 // 判断siblingNode和element是否为同一个父元素下的同一级的元素，返回bool值
-function isSiblingNode(element,siblingNode){
-    if(element.parentNode === siblingNode.parentNode){
+function isSiblingNode(element, siblingNode) {
+    if (element.parentNode === siblingNode.parentNode) {
         return true;
     }
     return false;
@@ -240,10 +240,14 @@ function isSiblingNode(element,siblingNode){
 
 
 // 获取element相对于浏览器窗口的位置，返回一个对象{x, y}
-function getPosition(element){
-    var x=0,y=0;
+function getPosition(element) {
+    var x = 0,
+        y = 0;
     var box = element.getBoundingClientRect();
-    return {x:box.left,y:box.top};
+    return {
+        x: box.left,
+        y: box.top
+    };
 }
 
 
@@ -272,7 +276,7 @@ $("[data-time=2015]"); // 返回第一个包含属性data-time且值为2015的�
 $("#adom .classa"); // 返回id为adom的DOM所包含的所有子节点中，第一个样式定义包含classa的对象
 
 function $(selector) {
-    if(!selector){
+    if (!selector) {
         return;
     }
     var getChilds = function(element) {
@@ -350,25 +354,25 @@ function $(selector) {
 }
 addEvent($("#doma"), "click", clicklistener);*/
 
-function addEvent(element,eventType,listener){
-    if(element.addEventListener){
-        element.addEventListener(eventType,listener,false);
-    }else if(element.attachEvent){
-        element.attachEvent("on" + eventType,listener);
+function addEvent(element, eventType, listener) {
+    if (element.addEventListener) {
+        element.addEventListener(eventType, listener, false);
+    } else if (element.attachEvent) {
+        element.attachEvent("on" + eventType, listener);
     }
 }
 
-function clicklistener(event){
+function clicklistener(event) {
     console.log("hello");
 }
 
 
 // 移除element对象对于event事件发生时执行listener的响应
-function removeEvent(element,eventType,listener){
-    if(element.removeEventListener){
-        element.removeEventListener(eventType,listener,true);
-    }else if(element.detachEvent){
-        element.detachEvent("on" + eventType,listener);
+function removeEvent(element, eventType, listener) {
+    if (element.removeEventListener) {
+        element.removeEventListener(eventType, listener, true);
+    } else if (element.detachEvent) {
+        element.detachEvent("on" + eventType, listener);
     }
 }
 
@@ -377,18 +381,19 @@ function removeEvent(element,eventType,listener){
 // 接下来我们实现一些方便的事件方法
 
 // 实现对click事件的绑定
-function addClickEvent(element,listener){
-    addEvent(element,"click",listener);
+function addClickEvent(element, listener) {
+    addEvent(element, "click", listener);
 }
 
 
 // 实现对于按Enter键时的事件绑定
-function addEnterEvent(element,listener){
-    addEvent(element,"keydown",listener);
+function addEnterEvent(element, listener) {
+    addEvent(element, "keydown", listener);
 }
-function enterListener(e){
+
+function enterListener(e) {
     e = e || window;
-    if(e.keyCode == 13 || e.keyCode == 108){
+    if (e.keyCode == 13 || e.keyCode == 108) {
         alert("hello");
     }
 }
@@ -456,11 +461,11 @@ init();*/
 // 使用示例
 // 还是上面那段HTML，实现对list这个ul里面所有li的click事件进行响应
 // $.delegate($("#list"), "li", "click", clickHandle);
-function delegateEvent(element,tag,eventName,listener){
-    element["on" + eventName] = function(e){
+function delegateEvent(element, tag, eventName, listener) {
+    element["on" + eventName] = function(e) {
         e = e || window;
         var target = e.srcElement ? e.srcElement : e.target;
-        if(target.tagName === tag){
+        if (target.tagName === tag) {
             target["on" + eventName] = listener;
         }
     }
@@ -474,14 +479,14 @@ $.delegate = delegateEvent;
 // 5.1 任务描述
 
 // 判断是否为IE浏览器，返回-1或者版本号
-function isIE(){
+function isIE() {
     var ua = navigator.userAgent;
     var pattern1 = /msie([^;]+)/i;
     var pattern2 = /rv:([^\)]+)/i;
-    if(pattern1.test(ua)){
+    if (pattern1.test(ua)) {
         var version = "IE " + RegExp["$1"];
         return version;
-    }else if(pattern2.test(ua)){
+    } else if (pattern2.test(ua)) {
         var version = "IE " + RegExp["$1"];
         return version;
     }
@@ -490,10 +495,10 @@ function isIE(){
 
 
 // 设置cookie
-function setCookie(cookieName,cookieValue,expiredays){
-    if(!expiredays){
+function setCookie(cookieName, cookieValue, expiredays) {
+    if (!expiredays) {
         document.cookie = cookieName + "=" + cookieValue;
-    }else{
+    } else {
         var date = new Date();
         date.setTime(date.getTime() + expiredays * 24 * 60 * 60 * 1000)
         document.cookie = cookieName + "=" + cookieValue + ";expires=" + date.toGMTString();
@@ -501,17 +506,102 @@ function setCookie(cookieName,cookieValue,expiredays){
 }
 
 // 获取cookie值
-function getCookie(cookieName){
+function getCookie(cookieName) {
     var cookies = document.cookie;
     var cookieArr = cookies.split(";");
-    for(var i=0,len=cookieArr.length;i<len;i++){
+    for (var i = 0, len = cookieArr.length; i < len; i++) {
         var key = trim(cookieArr[i].split("=")[0]);
         console.log(key);
         var value = cookieArr[i].split("=")[1];
-        if(key == cookieName){
+        if (key == cookieName) {
             console.log(key);
             return value;
         }
     }
     return "";
+}
+
+
+
+
+// 6.1 任务描述
+// 学习Ajax，并尝试自己封装一个Ajax方法。实现如下方法：
+// 使用示例：
+/*ajax(
+    'http://localhost:8080/server/ajaxtest', 
+    {
+        data: {
+            name: 'simon',
+            password: '123456'
+        },
+        onsuccess: function (responseText, xhr) {
+            console.log(responseText);
+        }
+    }
+);*/
+/*options是一个对象，里面可以包括的参数为：
+type: post或者get，可以有一个默认值
+data: 发送的数据，为一个键值对象或者为一个用&连接的赋值字符串
+onsuccess: 成功时的调用函数
+onfail: 失败时的调用函数*/
+
+function ajax(url, options) {
+
+    // 转换data数据格式
+    var transdata = function(obj) {
+        var rt = [];
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                rt.push(prop.concat("=", encodeURI(obj[prop])));
+            }
+        }
+        return rt.join("&");
+    }
+    var data = transdata(options.data);
+
+
+    // 创建对象
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // 判断type的类型
+    var type = options.type.toUpperCase();
+    if (!type) {
+        type = "GET";
+    }
+
+    // 发送请求
+    if (type === "GET") {
+        if (options.data) {
+            var getUrl = url;
+        } else {
+            var getUrl = url + "?" + data;
+        }
+        xhr.open(type, getUrl, true);
+        xhr.send();
+    } else if (type === "POST") {
+        xhr.open(type, url, true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(data);
+    }
+
+    // 处理回调
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                if (options.onsuccess) {
+                    options.onsuccess();
+                }
+            } else {
+                if (options.onfail) {
+                    options.onfail();
+                }
+            }
+        }
+    }
+
 }

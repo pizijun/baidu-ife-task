@@ -92,6 +92,7 @@ instanceof 和constructor在遇到跨域问题是不好使的
  5.事件监听
  (1).addEventListener支持ie8+及其他，ie11也不支持,ie6-ie8支持attachEvent，但this的值会变为window对象，而不是某个元素，而onclick的方式所有浏览器都支持，但测试了下ie6中this的值指向的是html元素，跟attachEvent的类似。
  (2).*****给自制的$对象添加一些方法，使其为$.funcname(ele,event,listener)(例如：$.on(ele,event,fn))，直接$.on=addEvent；但为什么像$.prototype.on=addEvent不行，会报错：$.on is not a function;
+ 搞清楚了，因为$.__proto__不是指向其prototype属性的。
  (3).*****关于事件代理，delegateEvent(element,tag,eventName,listener)传递的参数中似乎不需要listener，因为在父元素上已经绑定了事件监听，再在子元素绑定事件没有意义，而且经测试需要双击子元素才有效
  6.用户代理字符串检测
   IE 6 - IE 10的格式都差不多，这里记下IE10的：Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)，IE11的为: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko
