@@ -338,6 +338,9 @@ function $(selector) {
         }
 
     }
+    if(elet.tagName === "HTML"){
+        return;
+    }
     return elet;
 }
 

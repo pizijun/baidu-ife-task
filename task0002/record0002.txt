@@ -96,3 +96,6 @@ instanceof 和constructor在遇到跨域问题是不好使的
  (3).*****关于事件代理，delegateEvent(element,tag,eventName,listener)传递的参数中似乎不需要listener，因为在父元素上已经绑定了事件监听，再在子元素绑定事件没有意义，而且经测试需要双击子元素才有效
  6.用户代理字符串检测
   IE 6 - IE 10的格式都差不多，这里记下IE10的：Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)，IE11的为: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko
+ 7.正则匹配
+ \s等价于 
+ [ \f\n\r\t\v​\u00a0\u1680​\u180e\u2000​\u2001\u2002​\u2003\u2004​\u2005\u2006​\u2007\u2008​\u2009\u200a​\u2028\u2029​​\u202f\u205f​ \u3000],也就是说包括全角空格，换行符
