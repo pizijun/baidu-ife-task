@@ -466,7 +466,7 @@ init();*/
 // $.delegate($("#list"), "li", "click", clickHandle);
 function delegateEvent(element, tag, eventName, listener) {
     element["on" + eventName] = function(e) {
-        e = e || window;
+        e = e || window.event;
         var target = e.srcElement ? e.srcElement : e.target;
         if (target.tagName === tag) {
             target["on" + eventName] = listener;
