@@ -15,6 +15,10 @@ function countDown() {
         var YEAR = dateArr[0];
         var MONTH = dateArr[1];
         var DAY = dateArr[2];
+        if( parseInt(MONTH) > 13 || parseInt(DAY) > 32){
+            $("#error").innerHTML = "你输入的时间不正确";
+            return;
+        }
         var stop = new Date(parseInt(YEAR), parseInt(MONTH) - 1, parseInt(DAY), 0, 0, 0);
         var duration = stop - start;
         if(duration <= 0){
