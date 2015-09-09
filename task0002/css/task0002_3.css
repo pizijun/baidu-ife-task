@@ -17,11 +17,13 @@ body{
 }
 .wrap{
 	border: 1px solid black;
+	position: relative;
 }
 .banners{
 	border: 1px solid red;
 	overflow: hidden;
 	position: relative;
+	/* height: 2070px; */
 	height: 690px;
 }
 .banner{
@@ -30,10 +32,44 @@ body{
 	margin-left: -960px;
 	font-size: 0;
 }
+.banner01{
+	z-index: 3;
+}
+.banner02{
+	/*top: 690px*/
+}
+.banner03{
+	/*top: 1380px;*/
+}
 /*  .banner img{
  	width: 100%;
  	display: block;
  } */ 
 .focus{
-	border: 1px solid blue;
+	border: 1px solid red;
+	font-size: 0;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	z-index: 4;
+}
+.focus li{
+	display: inline-block;
+	border: 1px solid black;
+	position: relative;
+	left: -50%;
+	margin: 0 5px;
+}
+.focus li a{
+	border: 1px solid black;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+
+}
+.focus li a.selected{
+	background: red;
 }
