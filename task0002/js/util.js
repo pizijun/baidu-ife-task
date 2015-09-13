@@ -597,7 +597,7 @@ function ajax(url, options) {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 if (options.onsuccess) {
-                    options.onsuccess();
+                    options.onsuccess(xhr.responseText,xhr);
                 }
             } else {
                 if (options.onfail) {
