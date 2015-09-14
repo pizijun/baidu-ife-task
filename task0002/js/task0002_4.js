@@ -1,5 +1,5 @@
 var input = $("#input");
-$.on(input,"input",hint);
+$.on(input,"input",hint);//oninput事件，输入框数据变化就会触发
 $.on(input,"keydown",enterSelect);
 var index = 0;
 function hint(){
@@ -42,7 +42,7 @@ function hint(){
 	ajax(url,options);
 }
 
-function select(e){
+function select(e){//鼠标事件，处理选中的内容
 	e = e || window.event;
 	var target = e.srcElement ? e.srcElement : e.target;
 	var targetValue = target.textContent;
@@ -50,11 +50,11 @@ function select(e){
 	this.style.display = "none";
 }
 
-function enterSelect(e){
+function enterSelect(e){//键盘事件
 	e = e || window.event;
 	var hintElement = $("#hint");
 	var len = hintElement.children.length;
-	if(e.keyCode == 40){
+	if(e.keyCode == 40){//下键
 		index++;
 		if($(".selected")){
 			$(".selected").className = "";
@@ -65,7 +65,7 @@ function enterSelect(e){
 		}
 		hintElement.children[index].className = "selected";
 		input.value = hintElement.children[index].textContent;
-	}else if(e.keyCode == 38){
+	}else if(e.keyCode == 38){//上键
 		
 		if(index <= 0){
 			index = len;
@@ -80,7 +80,7 @@ function enterSelect(e){
 		}
 		hintElement.children[index].className = "selected";
 		input.value = hintElement.children[index].textContent;
-	}else if(e.keyCode == 13){
+	}else if(e.keyCode == 13){//enter
 		input.value = hintElement.children[index].textContent;
 		hintElement.style.display = "none";
 	}

@@ -12,14 +12,14 @@ h1,h2,h3{
 	font-weight: normal;
 	font-size: 100%;
 }
-.clearfix{
+.clearfix:after{
 	content: ".";
 	display: block;
 	height: 0;
 	visibility: hidden;
 	clear: both;
 }
-.clearfix:after{
+.clearfix{
 	*zoom: 1;
 }
 .wrap{
