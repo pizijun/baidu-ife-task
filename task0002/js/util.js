@@ -52,7 +52,7 @@ function cloneObject(src) {
     if (isArray(src)) {
         console.log(src);
         var des = [];
-        for (var i = 0, len = src.length; i < len; i++) {
+        for (var i = 0; i < src.length; i++) {
             des.push(src[i]);
             return des;
         }
@@ -94,7 +94,7 @@ var b = uniqArray(a);
 console.log(b); // [1, 3, 5, 7]*/
 function uniqArray(arr) {
     var result = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
+    for (var i = 0; i < arr.length; i++) {
         if (arr[i] !== "" && result.indexOf(arr[i]) === -1) {
             result.push(arr[i]);
         }
@@ -108,7 +108,7 @@ function uniqArray(arr) {
 // 练习通过循环，以及字符串的一些基本方法，分别扫描字符串str头部和尾部是否有连续的空白字符，
 // 并且删掉他们，最后返回一个完成去除的字符串
 function simpleTrim(str) {
-    for (var i = 0, len = str.length; i < len; i++) {
+    for (var i = 0; i < str.length; i++) {
         if (str[i] != " " && str[i] != "\t") {
             str = str.slice(i);
             break;
@@ -154,7 +154,7 @@ function output(item, index) {
 each(arr, output);  // 0:java, 1:c, 2:php, 3:html*/
 
 function each(arr, fn) {
-    for (var i = 0, len = arr.length; i < len; i++) {
+    for (var i = 0;i < arr.length; i++) {
         fn(arr[i], i);
     }
 }
@@ -207,7 +207,7 @@ function isMobilePhone(phone) {
 function hasClass(element, classname) {
     var classStr = trim(element.className);
     var classArr = uniqArray(classStr.split(" "));
-    for (var i = 0, len = classArr.length; i < len; i++) {
+    for (var i = 0;i < classArr.length; i++) {
         if (classArr.indexOf(classname) != -1) {
             return true;
         }
@@ -284,13 +284,13 @@ function $(selector) {
     }
     var arr = trim(selector).split(" ");
     var elet = document.getElementsByTagName("html")[0];
-    for (var i = 0, len = arr.length; i < len; i++) {
+    for (var i = 0; i < arr.length; i++) {
         var signal = arr[i][0];
         var childs = getChilds(elet);
         switch (signal) {
             case "#":
                 var content = arr[i].slice(1);
-                for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                for (var j = 0; j < childs.length; j++) {
                     if (childs[j].id === content) {
                         elet = childs[j];
                         break;
@@ -299,7 +299,7 @@ function $(selector) {
                 break;
             case ".":
                 var content = arr[i].slice(1);
-                for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                for (var j = 0; j < childs.length; j++) {
                     if (childs[j].className.indexOf(content) != -1) {
                         elet = childs[j];
                         break;
@@ -311,14 +311,14 @@ function $(selector) {
                 if (content.indexOf("=") != -1) {
                     var key = trim(content.split("=")[0]);
                     var value = trim(content.split("=")[1].slice(1, -1));
-                    for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                    for (var j = 0; j < childs.length; j++) {
                         if (childs[j].getAttribute(key) == value) {
                             elet = childs[j];
                             break;
                         }
                     }
                 } else {
-                    for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                    for (var j = 0; j < childs.length; j++) {
                         if (childs[j].attributes[content]) {
                             elet = childs[j];
                             break;
@@ -328,7 +328,7 @@ function $(selector) {
                 break;
             default:
                 var content = arr[i];
-                for (var j = 0, childsLen = childs.length; j < childsLen; j++) {
+                for (var j = 0; j < childs.length; j++) {
                     if (childs[j].tagName.toLowerCase() === content) {
                         elet = childs[j];
                         break;
@@ -512,7 +512,7 @@ function setCookie(cookieName, cookieValue, expiredays) {
 function getCookie(cookieName) {
     var cookies = document.cookie;
     var cookieArr = cookies.split(";");
-    for (var i = 0, len = cookieArr.length; i < len; i++) {
+    for (var i = 0; i < cookieArr.length; i++) {
         var key = trim(cookieArr[i].split("=")[0]);
         console.log(key);
         var value = cookieArr[i].split("=")[1];
