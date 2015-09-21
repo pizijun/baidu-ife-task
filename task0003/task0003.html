@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task0003</title>
+    <link rel="stylesheet" type="text/css" href="css/task0003.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <p>GTD Tools</p>
+    </header>
+    <div class="main-container">
+        <div class="left">
+            <p class="all-asign">所有任务（<span class="total-sum">0</span>）</p>
+            <p class="list-title">分类列表</p>
+            <ul class="category-list" id="category-list">
+                <li class="category-item" id="moren">
+                    <a href="#p0"><span class="font-icon"><i class="fa fa-fw fa-folder"></i></span>默认分类<span class='pnum'>(0)</span></a>
+                </li>
+                <!-- <li class="category-item">
+                    <a href="">
+                        <span class="font-icon"><i class="fa fa-fw fa-folder"></i></span>百度IFE项目<span>(10)</span><span class="destroy"><i class="fa fa-times fa-fw"></i></span>
+                    </a>
+                </li> -->
+                <!-- <li class="category-item" id="jiating">
+                    <a>
+                        <span class="font-icon"><i class="fa fa-fw fa-folder"></i></span>家庭生活(<span>0</span>)<span class="destroy"><i class="fa fa-times fa-fw"></i></span>
+                    </a>
+                </li>
+                <ul class="item-list">
+                    <li>
+                        <a class="selected">
+                            <span class="font-icon"><i class="fa fa-fw fa-file-o"></i></span>task1(<span>6</span>)
+                            <span class="destroy"><i class="fa fa-times fa-fw"></i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span class="font-icon"><i class="fa fa-fw fa-file-o"></i></span>task2(<span>4</span>)
+                            <span class="destroy"><i class="fa fa-times fa-fw"></i></span>
+                        </a>
+                    </li>
+                </ul> -->
+                <!-- <li class="category-item" id="sheduan">
+                    <a>
+                        <span class="font-icon"><i class="fa fa-fw fa-folder"></i></span>社团活动(<span>0</span>)<span class="destroy"><i class="fa fa-times fa-fw"></i></span>
+                    </a>
+                </li> -->
+            </ul>
+            <p class="add-class"><i class="fa fa-plus fa-fw fa-lg"></i>新增分类</p>
+        </div>
+        <div class="med">
+            <dl class="tab">
+                <dt class="tab-trigger" id="tab-trigger">
+                    <a href="#tab-content-all" class="trigger-item trigger-now">所有</a>
+                    <a href="#tab-content-false" class="trigger-item ">未完成</a>
+                    <a href="#tab-content-true" class="trigger-item ">已完成</a>
+                </dt>
+                <dd id="tab-content-all" class="tab-item tab-item-now">
+                    <!--  <div>
+                      <p>2015-04-29</p>
+                       <ul>
+                           <li><a href="#" id="done"><span><i class="fa fa-check-square"></i></span>todo3</a></li>
+                           <li><a href="#">todo4<span class="destroy"><i class="fa fa-times fa-fw"></i></sapn></a></li>
+                       </ul> 
+                   </div> -->
+                    <!-- <div>
+                        <div>
+                            <p>2015-05-09</p>
+                            <ul>
+                                <li><a href="#">todo7</a></li>
+                                <li><a href="#">todo8</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p>2015-05-10</p>
+                            <ul>
+                                <li><a href="#">todo7</a></li>
+                                <li><a href="#">todo8</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </dd>
+                <p class="add-task"><i class="fa fa-plus fa-fw fa-lg"></i>新增任务</p>
+            </dl>
+        </div>
+        <div class="right">
+            <!-- <div class="show-wrap">
+                <div class="title ">
+                    <h1>todo</h1>
+                    <span class="confirm"><i class="fa fa-fw fa-2x fa-check-circle-o"></i></span>
+                    <span class="edit"><i class="fa fa-fw fa-2x fa-pencil-square-o"></i></span>
+                </div>
+                <div class="date">任务日期：<span>2015-04-30</span></div>
+                <div class="content">
+                    <p>完成task3的编码工作</p>
+                </div>
+            </div> -->
+            <!-- <div class="editing-area">
+                <div>
+                    <label for="title-input">任务标题：</label>
+                    <input type="text" id="title-input">
+                </div>
+                <div>
+                    <label for="date-input">任务日期：</label>
+                    <input type="text" id="date-input">
+                </div>
+                <div>
+                    <label for="content-input">任务内容：</label>
+                    <textarea id="content-input" cols="80" rows="7"></textarea>
+                </div>
+                <div><a class="sure">确定</a><a class="abolish">取消</a></div>
+            </div> -->
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="container">
+            <div class="head">新增分类<i class="fa fa-times fa-fw"></i></div>
+            <div class="content-box">
+                <div class="parent-wrap">
+                    <label for="parent-class">可选父类：</label>
+                    <select name="parent" id="parent-class" class="parent-class">
+                        <option value="nothing">无</option>
+                        <option value="0">默认分类</option>
+                        <!-- <option value="haha">填写</option> -->
+                    </select>
+                </div>
+                <div class="new-wrap">
+                    <label for="new-class">新增类名：</label>
+                    <input type="text" id="new-class" class="new-class">
+                </div>
+                <div class="btn-wrap">
+                    <button type="button" id="ok" class="ok">确定</button>
+                    <button type="button" id="cancle" class="cancle">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/util01.js"></script>
+<script src="js/task0003.js"></script>
+
+</html>
