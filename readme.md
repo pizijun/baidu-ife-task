@@ -6,3 +6,5 @@
 任务要求：https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0002
 ##### 3.task0003
 任务要求：https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0003
+##### 4.移动杨帆
+任务要求：https://github.com/baidu-ife/ife/blob/master/2015_summer%2Ftask%2Fmob_yangfan_01.md

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>记账本</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/account.css">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div class="nav-top">
+                <i class="fa fa-fw fa-bars" id="toggleIcon"></i>
+                <span>记账本</span>
+                <i class="fa fa-fw fa-pencil" id="addAccount"></i>
+            </div>
+            <ul id="nav-list" class="nav-list clearfix">
+                <li><a class="on">账目列表</a></li>
+                <li><a>账目统计</a></li>
+                <li><a>账目图表</a></li>
+            </ul>
+        </header>
+        <section class="list-wrap">
+            <ul id="accout-list">
+            </ul>
+        </section>
+        <section class="compute-wrap">
+            <div class="compute-nav flex-box justify-between align-items">
+                <span id="cancel">&times;</span>
+                <span>记一笔</span>
+                <a id="addbtn" class="addbtn">发布</a>
+            </div>
+            <ul class="activity-list">
+                <li>
+                    <div class="clearfix">
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-usd"></i>
+                            <span>收入</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="clearfix">
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-female"></i>
+                            <span>衣服</span>
+                        </div>
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-coffee"></i>
+                            <span>饮食</span>
+                        </div>
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-home"></i>
+                            <span>住宿</span>
+                        </div>
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-plane"></i>
+                            <span>交通</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="clearfix">
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-shopping-cart"></i>
+                            <span>购物</span>
+                        </div>
+                        <div class="cover flex-box align-items direction-column">
+                            <i class="fa fa-fw fa-dot-circle-o"></i>
+                            <span>其它</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="counter" class="counter">
+                <div class="result-bar flex-box justify-between align-items">
+                    <div class="flex-box align-items item">
+                        <i class="fa fa-fw fa-plane"></i>
+                        <span>交通</span>
+                    </div>
+                    <div>
+                        <span>￥</span>
+                        <span id="number">0</span>
+                    </div>
+                </div>
+                <div class="counting-area flex-box direction-column">
+                    <div class="flex-box">
+                        <span data-value="1">1</span>
+                        <span data-value="2">2</span>
+                        <span data-value="3">3</span>
+                        <i class="fa fa-long-arrow-left" data-value="backspace"></i>
+                    </div>
+                    <div class="flex-box">
+                        <span data-value="4">4</span>
+                        <span data-value="5">5</span>
+                        <span data-value="6">6</span>
+                        <span data-value="plus">+</span>
+                    </div>
+                    <div class="flex-box">
+                        <span data-value="7">7</span>
+                        <span data-value="8">8</span>
+                        <span data-value="9">9</span>
+                        <span data-value="minus">-</span>
+                    </div>
+                    <div class="flex-box">
+                        <span data-value="clear">C</span>
+                        <span data-value="0">0</span>
+                        <span data-value=".">.</span>
+                        <span data-value="equal">=</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="statis-wrap">
+            <div class="accout-statis">
+                <ul class="statis-list">
+                </ul>
+            </div>
+        </section>
+        <section class="chart-wrap">
+            <div class="accout-chart">
+                <div class="chart-head">
+                    <ul class="flex-box">
+                        <li class="flex-box direction-column"><span>总收入</span><span class='total-income'>3240</span></li>
+                        <li class="flex-box direction-column"><span>总支出</span><span class='total-expense'>225</span></li>
+                        <li class="flex-box direction-column"><span>总结余</span ><span class='total-remaining'>355</span></li>
+                    </ul>
+                </div>
+                <div class="pie-wrap clearfix">
+                    <h3>支出占比饼图</h3>
+                    <canvas id="pie"></canvas>
+                </div>
+                <div class="line-wrap">
+                    <h3>月平均收入/支出 折线图</h3>
+                    <canvas id="line"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/account.js"></script>
+<script src="js/Chart.js"></script>
+<script src="js/mychart.js"></script>
+</html>
